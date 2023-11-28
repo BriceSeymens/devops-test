@@ -1,4 +1,4 @@
-name: Test, Upload artifact and Deploy to Heroku
+name: Test, Upload artifact and Deploy
 
 on: workflow_dispatch
 
@@ -36,7 +36,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: artifact
-        path: ./target/spring-github-actions-demo-0.1.jar
+        path: ./target/exercise-renovation-0.0.1-SNAPSHOT.jar
   deploy:
     runs-on: ubuntu-latest
     needs: test
@@ -52,5 +52,5 @@ jobs:
       - name: Deploy
         run: railway up
         env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TEST }}
+          RAILWAY_TOKEN: ${{ secrets.ACTIONS_RAILWAY-TEST }}
 
